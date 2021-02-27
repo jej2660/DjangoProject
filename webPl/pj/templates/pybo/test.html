@@ -1,0 +1,9 @@
+{% if ques_list %}
+    {% for itme in ques_list %}
+        <p>{{itme.subject}}</p>
+        <p>{{forloop.counter}}</p>
+        <p>왜 안됨</p>
+    {% endfor %}
+{% else %}
+    <h3>Error Ocuur </h3>
+{% endif %}

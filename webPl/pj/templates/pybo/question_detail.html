@@ -1,0 +1,25 @@
+{% if question %}
+    <p><h3>Subject: {{question.subject}}</h3></p>
+    <div style="background-color:rgb(185, 223, 185);display:inline-block">
+        {{question.content}}
+    </div>
+{% endif %}
+
+<h5>{{ question.ansswer_set.count}} 개의 답변이 있습니다.</h5> 
+
+<div>
+    <ul>
+        {% for answer in question.ansswer_set.all %} 
+            <li> {{ answer.content }} </li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+
+
+<form action="{% url 'pybo:answer_create' question.id}" method="post">
+    {% csrf_token %}
+    <textarea name='content' id='content' rows='15'></textarea>
+    <input type='submit' value="submit">
+</form>
